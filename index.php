@@ -1,7 +1,7 @@
 <?php
 	header("Content-type: text/html; charset=utf-8");
 	//获取控制器名 方法名
-	$controller = isset($_GET['c']) ? $_GET['c'] : 'User';
+	$controller = isset($_GET['c']) ? $_GET['c'] : 'Blog';
 	$action 	= isset($_GET['a']) ? $_GET['a'] : 'lists';
 	//自动加载
 	session_start();

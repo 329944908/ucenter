@@ -39,12 +39,14 @@
 			return $info;
 		}
 		function updateUser($id,$name,$age,$password){
-			// $id = $_POST['id'];
-			// $name = $_POST['username'];
-			// $age = $_POST['age'];
-			// $password = $_POST['password'];
 			$sql = "update user set name='{$name}',age={$age},password='{$password}' where id={$id};";
 			$res = $this->mysqli->query($sql);
 			return $res;
-	}
-}
+		}
+		public function getUserInfoById($id){
+			$sql = "select * from user where id= {$id}";
+			$res = $this->mysqli->query($sql);
+			$data = $res->fetch_all(MYSQL_ASSOC);
+			return $data[0];
+		}
+    }
