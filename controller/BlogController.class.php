@@ -2,9 +2,13 @@
 	class BlogController{
 		public function add(){
 			if(!isset($_SESSION['me'])||$_SESSION['me']['id']<=0){
-				header('Location:index.php?c=UserCenter&a=login');
+			header('Refresh:3,Url=index.php?c=UserCenter&a=login');
+			// 	header('Location:index.php?c=UserCenter&a=login');
+				echo "不能发布文章，请登录！";
+			}else{
+				include "./view/blog/add.html";
 			}
-			include "./view/blog/add.html";
+			
 		}
 		public function doAdd(){
 			$content = $_POST['content'];
