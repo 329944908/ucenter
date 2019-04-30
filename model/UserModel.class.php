@@ -5,7 +5,7 @@
 	class UserModel{
 		public $mysqli;
 		function __construct(){
-			$this->mysqli=new mysqli("localhost","root","","ztstunew");
+			$this->mysqli=new mysqli("localhost","root","Yyx521...","jili");
 		}
 		function addUser($name,$age,$password){
 			$sql = "insert into user(name,age,password) value('{$name}',{$age},'{$password}')";
@@ -15,8 +15,19 @@
 		function getUserInfoByName($name) {
 			$sql = "select * from user where name = '{$name}'";
 			$res = $this->mysqli->query($sql);
-			$data = $res->fetch_all(MYSQL_ASSOC);
-			return $data[0];
+
+			if (!empty($res)) {
+                $data = $res->fetch_all(MYSQL_ASSOC);
+                if (!empty($data)) {
+                    return $data[0];
+                } else {
+                    return array();
+                }
+
+            } else {
+			    return array();
+            }
+
 		}
 		function getUserLists(){
 			$sql= "select * from user";
