@@ -6,7 +6,7 @@
 		public function doLogin(){
 			$name = $_POST['name'];
 			$password = $_POST['password'];
-			$userModel = new userModel();
+			$userModel = new UserModel();
 			$userInfo = $userModel->getUserInfoByName($name);
 			if (!empty($userInfo)){
                 if($userInfo['password']==$password){
@@ -42,7 +42,7 @@
 				echo '参数错误，请重新填写';
 				die();
 			}
-			$userModel = new userModel();
+			$userModel = new UserModel();
             $userInfo = $userModel->getUserInfoByName($name);
             if (empty($userInfo)) {
                 $status = $userModel->addUser($name, $age, $password);
